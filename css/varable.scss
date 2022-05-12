@@ -1,0 +1,35 @@
+.book .paper .back {
+    transition: transform 1s;
+    transform-origin: 0 50%;
+    color: #fff;
+}
+
+
+// 設定每頁的 z-index（遞增）
+@for $i from 1 through 28 {
+    .book .paper.page-#{$i} {
+        z-index: 40-$i;
+    }
+}
+
+// 設定頁面正面位置
+@for $i from 1 through 28 {
+    .book .page-#{$i} .front {
+        transform: translateZ(#{5-$i/10}px);
+        z-index: 10+$i;
+    }
+}
+
+// 引入簡介本頁面圖片
+@for $i from 1 through 28 {
+    .teams-page-#{$i} {
+        background-image: linear-gradient(to left, transparent 95%, rgba(135, 135, 135, 0.4) 100%),
+        url('../img/teams-paper-#{$i}.png');
+        background-size: cover;
+    }
+}
+
+.fullbook {
+    transform: scale(1.5) translate(-33%, -13%);
+    height: 100vh;
+}

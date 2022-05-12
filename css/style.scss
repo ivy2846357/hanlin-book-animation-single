@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// container 的設置未完成，還沒 push 到 github 上
+#container {
+  background-color: #fff4d3;
+  width: 100%;
+  height: 80vh;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+#fullscr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 10rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  color: #fff;
+  border: 3px solid rgba(black, .4);
+  background-color: rgba(black, .3);
+  opacity: .3;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.zoom-icon {
+  color: rgba(black, .8);
+  height: 2rem;
+  width: 2rem;
+}
+
+#fullscr:hover {
+  opacity: 1;
+}
+
+// 設定書本角度
+.book {
+  width: 450px;
+  transform-style: preserve-3d;
+  // transform: rotateX(45deg) rotateY(0deg) rotateZ(-45deg);
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transition: all 1s;
+  position: absolute;
+  // 設定書本一開始的位置
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  height: 40em;
+}
+
+// 設定書本打開後的位置
+// .book.openbook{
+//   left: 50%;
+// }
+// // 設定書本側邊
+// .book .side {
+//   width: 3em;
+//   height: 40em;
+//   background: #2162a2;
+//   position: absolute;
+//   left: -3em;
+//   top: 0;
+//   transform-origin: 100% 100%;
+//   transform: rotateY(-90deg) rotateX(0deg);
+// }
+// // 設定書本底部
+// .book .bottom {
+//   width: 28em;
+//   height: 3em;
+//   background: #e2e2e2;
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   transform-origin: 100% 100%;
+//   transform: rotateX(90deg);
+// }
+// 設定書本翻開後的角度
+// .book.open {
+//   // transform: rotateX(35deg) rotateY(0deg) rotateZ(-35deg);
+//   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+// }
+
+.book .paper,
+.book .shadow {
+  width: 28em;
+  height: 40em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+// 頁面 hover 放大效果
+// .paper:hover {
+//   transform: perspective(250rem) rotateY(-20deg);
+// }
+
+// .book .shadow {
+//   background: transparent;
+//   transform: translateZ(-3em);
+//   box-shadow: -1em 1em 1em 0px #ccc3a9;
+//   z-index: 1;
+// }
+// 翻書效果
+.book .paper {
+  transition: transform 1s, box-shadow 0.5s 0.2s;
+  transform-origin: 0 50%;
+  transform-style: preserve-3d;
+}
+
+.book .paper.open {
+  transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
+}
+
+// .book .paper.open:nth-child(1),
+// .page-14{
+//   // box-shadow: 2.2em 1em 0px 0px #ccc3a9;
+//   box-shadow: 0.5em 1em 3em 0.5em #ccc3a9;
+// }
+.book .paper .page.front {
+  transition: transform 1s;
+  transform-origin: 0 50%;
+  backface-visibility: hidden;
+  z-index: 2;
+}
+
+.book .page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+}
+
+.book .page-1 .page.front:after {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(160, 115, 115, 0.1);
+}
+
+// 引用相關變數
+@import './varable.scss';
